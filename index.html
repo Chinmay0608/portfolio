@@ -345,7 +345,11 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem;
+  }
+  .project-icon svg {
+    width: 18px; height: 18px;
+    stroke: var(--amber);
+    stroke-width: 2px;
   }
   .project-links { display: flex; gap: 0.75rem; }
   .project-link {
@@ -402,9 +406,14 @@
   }
   .achievement-item:hover { border-color: var(--amber-dim); }
   .achievement-icon {
-    font-size: 1.1rem;
     flex-shrink: 0;
-    margin-top: 0.1rem;
+    margin-top: 0.2rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .achievement-icon svg {
+    width: 18px; height: 18px;
+    stroke: var(--amber);
+    stroke-width: 2px;
   }
   .achievement-text { font-size: 0.9rem; color: var(--gray); line-height: 1.7; }
   .achievement-text strong { color: var(--white); font-weight: 500; }
@@ -430,6 +439,15 @@
     border: 1px solid var(--border);
     border-radius: 6px;
     transition: color 0.2s, border-color 0.2s;
+  }
+  .contact-link svg {
+    width: 14px; height: 14px;
+    stroke: var(--gray);
+    stroke-width: 2px;
+    transition: stroke 0.2s;
+  }
+  .contact-link:hover svg {
+    stroke: var(--amber);
   }
   .contact-link:hover { color: var(--amber); border-color: var(--amber-dim); }
   .footer-note {
@@ -647,7 +665,7 @@
     <!-- MindVault -->
     <div class="project-card reveal">
       <div class="project-top">
-        <div class="project-icon">🧠</div>
+        <div class="project-icon"><i data-lucide="brain"></i></div>
         <div class="project-links">
           <a href="https://github.com/Chinmay0608/journalApp" class="project-link" target="_blank">GitHub ↗</a>
         </div>
@@ -666,7 +684,7 @@
     <!-- Skill-Bridge -->
     <div class="project-card reveal">
       <div class="project-top">
-        <div class="project-icon">💼</div>
+        <div class="project-icon"><i data-lucide="briefcase"></i></div>
         <div class="project-links">
           <a href="https://github.com/Chinmay0608/job-portal-system" class="project-link" target="_blank">GitHub ↗</a>
           <a href="https://job-portal-system-alpha.vercel.app/" class="project-link" target="_blank">Live ↗</a>
@@ -692,19 +710,19 @@
   <h2 class="section-title reveal">Milestones</h2>
   <div class="achievements-list">
     <div class="achievement-item reveal">
-      <div class="achievement-icon">⚡</div>
+      <div class="achievement-icon"><i data-lucide="zap"></i></div>
       <div class="achievement-text"><strong>500+ algorithmic problems</strong> solved on LeetCode and GeeksForGeeks, with focused depth in Trees, Dynamic Programming, and Graphs.</div>
     </div>
     <div class="achievement-item reveal">
-      <div class="achievement-icon">📜</div>
+      <div class="achievement-icon"><i data-lucide="award"></i></div>
       <div class="achievement-text"><strong>Java Development Certification</strong> — formal credential in Core Java with focus on OOP, concurrency, and system design patterns. <a href="https://drive.google.com/file/d/1mccdGyk6PYX0hNuyWTxR4P4czrBAsHB4/view?usp=drive_link" style="color:var(--amber);text-decoration:none;" target="_blank">View →</a></div>
     </div>
     <div class="achievement-item reveal">
-      <div class="achievement-icon">📄</div>
+      <div class="achievement-icon"><i data-lucide="file-text"></i></div>
       <div class="achievement-text">Published a <strong>peer-reviewed research paper</strong> in Pratibodh on the Impact of Technology on Education and Learning. <a href="https://pratibodh.org/index.php/pratibodh/article/view/345" style="color:var(--amber);text-decoration:none;" target="_blank">Read →</a></div>
     </div>
     <div class="achievement-item reveal">
-      <div class="achievement-icon">🎯</div>
+      <div class="achievement-icon"><i data-lucide="target"></i></div>
       <div class="achievement-text">Organised <strong>Knowledge Knockout</strong> tech fest in 2024 and 2025 — end-to-end coordination of cross-functional teams, budgeting, and event execution for a college-wide competition.</div>
     </div>
   </div>
@@ -716,10 +734,10 @@
   <h2 class="section-title reveal">Let's talk</h2>
   <p class="contact-sub reveal">Open to SWE internships and new grad roles in India, international roles, as well as remote roles. If you're building something interesting, I'd like to hear about it.</p>
   <div class="contact-links reveal">
-    <a href="mailto:chinmaymaheshwari.it27@gmail.com" class="contact-link" id="email-link">✉ Email</a>
-    <a href="https://www.linkedin.com/in/chinmay8064/" class="contact-link" target="_blank">in LinkedIn</a>
-    <a href="https://github.com/Chinmay0608" class="contact-link" target="_blank">⌥ GitHub</a>
-    <a href="https://leetcode.com/u/Chinmay0608/" class="contact-link" target="_blank">{ } LeetCode</a>
+    <a href="mailto:chinmaymaheshwari.it27@gmail.com" class="contact-link" id="email-link"><i data-lucide="mail"></i> Email</a>
+    <a href="https://www.linkedin.com/in/chinmay8064/" class="contact-link" target="_blank"><i data-lucide="linkedin"></i> LinkedIn</a>
+    <a href="https://github.com/Chinmay0608" class="contact-link" target="_blank"><i data-lucide="github"></i> GitHub</a>
+    <a href="https://leetcode.com/u/Chinmay0608/" class="contact-link" target="_blank"><i data-lucide="code-2"></i> LeetCode</a>
   </div>
   <div class="footer-note reveal">Built by Chinmay Maheshwari · 2026</div>
 </section>
@@ -788,6 +806,10 @@ emailLink.addEventListener('click', (e) => {
     window.location.href = emailLink.getAttribute('href');
   });
 });
+
+// Initialize Lucide Icons
+lucide.createIcons();
 </script>
+<script src="https://unpkg.com/lucide@latest"></script>
 </body>
 </html>
