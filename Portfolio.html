@@ -60,6 +60,33 @@
   }
   .nav-links a:hover { color: var(--white); }
 
+  /* Mobile Menu Toggle */
+  .mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 101;
+  }
+  .mobile-nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .mobile-nav-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .mobile-nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-nav-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
   /* ── HERO ── */
   #hero {
     min-height: 100vh;
@@ -207,6 +234,60 @@
     font-size: 0.78rem;
     color: var(--gray-dim);
     letter-spacing: 0.05em;
+  }
+
+  /* ── EXPERIENCE ── */
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 820px;
+  }
+  .experience-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: border-color 0.2s;
+  }
+  .experience-item:hover { border-color: var(--amber-dim); }
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .exp-title-company h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--white);
+    font-weight: 600;
+  }
+  .exp-company {
+    font-family: var(--font-mono);
+    color: var(--amber);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+  .exp-duration {
+    font-family: var(--font-mono);
+    color: var(--gray-dim);
+    font-size: 0.8rem;
+  }
+  .exp-bullets {
+    padding-left: 1.2rem;
+    color: var(--gray);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .exp-bullets li {
+    font-size: 0.88rem;
+    line-height: 1.6;
   }
 
   /* ── SKILLS ── */
@@ -379,7 +460,24 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
+    .mobile-nav-toggle { display: flex; }
+    .nav-links {
+      position: fixed;
+      top: 0; right: -100%;
+      width: 250px;
+      height: 100vh;
+      background: var(--bg2);
+      border-left: 1px solid var(--border);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
+      transition: right 0.3s ease;
+      display: flex;
+    }
+    .nav-links.active {
+      right: 0;
+    }
     #hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
     .projects-grid { grid-template-columns: 1fr; }
@@ -391,8 +489,14 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">cm.dev</div>
+  <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#achievements">Achievements</a></li>
@@ -406,9 +510,10 @@
   <div class="hero-eyebrow">Available for SWE Internships &amp; New Grad Roles</div>
   <h1 class="hero-name">Chinmay<br/>Maheshwari</h1>
   <div class="hero-typewriter" id="typewriter"><span></span><span class="cursor"></span></div>
-  <p class="hero-sub">B.Tech (IT) undergrad who builds first, then optimises — shipping event-driven backends, full-stack platforms, and AI-integrated systems across Java and JavaScript.</p>
+  <p class="hero-sub">B.Tech (IT) undergrad who builds first, then optimizes — shipping event-driven backends, full-stack platforms, and AI-integrated systems across Java and JavaScript.</p>
   <div class="hero-ctas">
     <a href="#projects" class="btn-primary">See my work</a>
+    <a href="#" target="_blank" class="btn-ghost">Resume ↗</a> <!-- Replace '#' with your hosted PDF Resume link -->
     <a href="#contact" class="btn-ghost">Get in touch</a>
   </div>
 </section>
@@ -439,6 +544,35 @@
       <div class="stat-card reveal">
         <div class="stat-number">2</div>
         <div class="stat-label">Full-stack projects deployed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">02 / Experience</div>
+  <h2 class="section-title reveal">Where I've worked</h2>
+  <div class="experience-list">
+    <div class="experience-item reveal">
+      <div class="exp-header">
+        <div class="exp-title-company">
+          <h3>Software Engineer Intern</h3>
+          <span class="exp-company">Yinolite</span>
+        </div>
+        <span class="exp-duration">Dec 2024 - Feb 2025</span>
+      </div>
+      <p class="exp-desc">Designed and built backend API features for the core Job Portal system:</p>
+      <ul class="exp-bullets">
+        <li>Shipped 9+ REST API endpoints with JWT role-based access control across Auth, Job, and Application modules.</li>
+        <li>Designed a 3-collection MongoDB schema utilizing advanced aggregation pipelines and multi-field indexing for complex queries across 50+ listings.</li>
+        <li>Implemented secure authentication middleware and handled resume pipeline integration.</li>
+      </ul>
+      <div class="project-stack" style="margin-top: 1rem;">
+        <span class="stack-pill">MERN Stack</span>
+        <span class="stack-pill">JWT</span>
+        <span class="stack-pill">MongoDB</span>
+        <span class="stack-pill">REST APIs</span>
       </div>
     </div>
   </div>
@@ -550,22 +684,6 @@
         <span class="live-badge">● LIVE</span>
       </div>
     </div>
-    <!-- Yinolite Internship -->
-    <div class="project-card reveal">
-      <div class="project-top">
-        <div class="project-icon">🔧</div>
-        <div class="project-links"></div>
-      </div>
-      <div class="project-name">Job Portal API — Yinolite</div>
-      <div class="project-desc">Internship project: 9+ REST API endpoints with JWT role-based access control across Auth, Job, and Application modules. 3-collection MongoDB schema with advanced aggregation pipelines and multi-field indexing for complex filtering across 50+ listings.</div>
-      <div class="project-stack">
-        <span class="stack-pill">MERN Stack</span>
-        <span class="stack-pill">JWT</span>
-        <span class="stack-pill">MongoDB</span>
-        <span class="stack-pill">REST APIs</span>
-        <span class="live-badge">● Internship</span>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -639,6 +757,23 @@ const observer = new IntersectionObserver(
   { threshold: 0.12 }
 );
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Mobile Menu Toggle ──
+const toggle = document.querySelector('.mobile-nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+const links = document.querySelectorAll('.nav-links a');
+
+toggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  toggle.classList.toggle('active');
+});
+
+links.forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    toggle.classList.remove('active');
+  });
+});
 </script>
 </body>
 </html>
