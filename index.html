@@ -649,22 +649,26 @@
     <div class="experience-item reveal">
       <div class="exp-header">
         <div class="exp-title-company">
-          <h3>Software Engineer Intern</h3>
-          <span class="exp-company">Yinolite</span>
+          <h3>Full Stack Developer Intern</h3>
+          <span class="exp-company">Yinolite Solution</span>
         </div>
         <span class="exp-duration">May 2026 - June 2026</span>
       </div>
-      <p class="exp-desc">Designed and built backend API features for the core Job Portal system:</p>
+      <p class="exp-desc">Collaborated with senior engineers to design and build full-stack features for a Job Portal System:</p>
       <ul class="exp-bullets">
-        <li>Shipped 9+ REST API endpoints with JWT role-based access control across Auth, Job, and Application modules.</li>
-        <li>Designed a 3-collection MongoDB schema utilizing advanced aggregation pipelines and multi-field indexing for complex queries across 50+ listings.</li>
-        <li>Implemented secure authentication middleware and handled resume pipeline integration.</li>
+        <li>Collaborated with senior engineers to design and build full-stack features for a Job Portal System using React.js and Node.js — contributing across both frontend and backend layers of a real-world web application.</li>
+        <li>Designed and implemented 9+ secure, scalable REST API endpoints using Java and JWT-based role-based access control; performed debugging, troubleshooting, and performance optimization across Auth, Job, and Application modules.</li>
+        <li>Wrote JUnit unit tests and integration tests to ensure code quality; designed a 3-collection MongoDB schema with optimized dynamic filtering across 50+ listings.</li>
       </ul>
       <div class="project-stack" style="margin-top: 1rem;">
         <span class="stack-pill">MERN Stack</span>
+        <span class="stack-pill">React.js</span>
+        <span class="stack-pill">Node.js</span>
+        <span class="stack-pill">Java</span>
+        <span class="stack-pill">REST APIs</span>
         <span class="stack-pill">JWT</span>
         <span class="stack-pill">MongoDB</span>
-        <span class="stack-pill">REST APIs</span>
+        <span class="stack-pill">JUnit</span>
       </div>
     </div>
   </div>
@@ -678,55 +682,57 @@
     <div class="skill-group reveal">
       <div class="skill-group-name">Languages</div>
       <div class="skill-tags">
-        <span class="skill-tag">Java (Core)</span>
-        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Java (Core, Java 8+)</span>
         <span class="skill-tag">SQL</span>
-      </div>
-    </div>
-    <div class="skill-group reveal">
-      <div class="skill-group-name">Backend</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Spring Boot 3</span>
-        <span class="skill-tag">Node.js</span>
-        <span class="skill-tag">Express.js</span>
-        <span class="skill-tag">REST APIs</span>
-        <span class="skill-tag">JWT</span>
-        <span class="skill-tag">Kafka</span>
       </div>
     </div>
     <div class="skill-group reveal">
       <div class="skill-group-name">Frontend</div>
       <div class="skill-tags">
         <span class="skill-tag">React.js</span>
-        <span class="skill-tag">HTML/CSS</span>
-        <span class="skill-tag">Tailwind CSS</span>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-name">Backend &amp; APIs</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Spring Boot 3</span>
+        <span class="skill-tag">RESTful APIs</span>
+        <span class="skill-tag">JWT</span>
       </div>
     </div>
     <div class="skill-group reveal">
       <div class="skill-group-name">Databases</div>
       <div class="skill-tags">
-        <span class="skill-tag">MongoDB</span>
-        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">MySQL (SQL)</span>
+        <span class="skill-tag">MongoDB (NoSQL)</span>
       </div>
     </div>
     <div class="skill-group reveal">
-      <div class="skill-group-name">DevOps & Tools</div>
+      <div class="skill-group-name">Testing &amp; DevOps</div>
       <div class="skill-tags">
-        <span class="skill-tag">Git</span>
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">GitHub Actions</span>
-        <span class="skill-tag">Postman</span>
         <span class="skill-tag">JUnit</span>
+        <span class="skill-tag">Postman</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">GitHub Actions (CI/CD)</span>
+        <span class="skill-tag">Docker</span>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-name">AI &amp; Tools</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Gemini Flash API</span>
+        <span class="skill-tag">Claude</span>
+        <span class="skill-tag">GitHub Copilot</span>
+        <span class="skill-tag">ChatGPT</span>
       </div>
     </div>
     <div class="skill-group reveal">
       <div class="skill-group-name">Fundamentals</div>
       <div class="skill-tags">
-        <span class="skill-tag">OOP</span>
         <span class="skill-tag">DSA</span>
-        <span class="skill-tag">System Design</span>
+        <span class="skill-tag">OOP</span>
         <span class="skill-tag">DBMS</span>
-        <span class="skill-tag">OS</span>
+        <span class="skill-tag">System design (basics)</span>
       </div>
     </div>
   </div>
@@ -842,7 +848,7 @@ const projectsData = [
   {
     title: "MindVault",
     description: "A production-grade journaling backend with an event-driven Kafka pipeline for real-time AI sentiment analysis via Gemini Flash API. Includes a local lexicon fallback for reliability, CI/CD via GitHub Actions, and compound-index optimisations that cut retrieval latency by 25%.",
-    tags: ["Java", "Spring Boot", "Kafka", "MongoDB", "Gemini API", "GitHub Actions"],
+    tags: ["Java", "Spring Boot", "Kafka", "MongoDB", "Gemini API"],
     icon: "brain",
     links: [
       { label: "GitHub ↗", url: "https://github.com/Chinmay0608/journalApp" }
@@ -852,7 +858,7 @@ const projectsData = [
   {
     title: "Skill-Bridge",
     description: "Full-stack job portal built and deployed solo. JWT + Google OAuth 2.0 authentication, role-based dashboards for recruiters and candidates, Cloudinary resume pipeline, and zero-failure regression suite — end-to-end in production.",
-    tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Cloudinary"],
+    tags: ["React.js", "Node.js", "Express.js", "MongoDB"],
     icon: "briefcase",
     links: [
       { label: "GitHub ↗", url: "https://github.com/Chinmay0608/job-portal-system" },
