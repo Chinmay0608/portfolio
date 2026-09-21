@@ -151,18 +151,20 @@
     filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.75)) drop-shadow(0 0 14px rgba(251, 191, 36, 0.45));
   }
 
-  /* Tooltip hint */
+  /* Status description hint: ON / OFF */
   #bulb-wrap::after {
-    content: attr(title);
+    content: 'OFF';
     position: absolute;
     top: calc(100% + 4px);
     left: 50%;
     transform: translateX(-50%);
     background: var(--bg2);
-    color: var(--white);
-    font-size: 0.68rem;
+    color: var(--gray-dim);
+    font-size: 0.65rem;
+    font-weight: 600;
     font-family: var(--font-mono);
-    padding: 3px 8px;
+    letter-spacing: 0.08em;
+    padding: 2px 7px;
     border-radius: 4px;
     white-space: nowrap;
     opacity: 0;
@@ -171,9 +173,17 @@
     border: 1px solid var(--border);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   }
-  #bulb-wrap:hover::after {
+  #bulb-wrap:hover::after,
+  #bulb-wrap:focus::after {
     opacity: 1;
     transform: translateX(-50%) translateY(4px);
+  }
+  [data-theme="light"] #bulb-wrap::after {
+    content: 'ON';
+    color: #d97706;
+    background: #ffffff;
+    border-color: rgba(217, 119, 6, 0.4);
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.16);
   }
 
   /* ── FLASH OVERLAY ── */
@@ -785,7 +795,7 @@
     <li class="nav-item-achievements">
       <a href="#achievements">Achievements</a>
       <!-- LIGHTBULB THEME TOGGLE — hanging under Achievements in header -->
-      <div id="bulb-wrap" role="button" aria-label="Toggle light/dark mode" title="Toggle theme">
+      <div id="bulb-wrap" role="button" aria-label="Toggle light/dark mode">
         <div id="bulb-cord"></div>
         <div id="bulb-socket"></div>
         <div id="bulb-icon">
@@ -1184,7 +1194,7 @@ lucide.createIcons();
     setTimeout(() => {
       cb();
       flash.style.opacity = '0';
-      flash.style.background = '#fff8e8';
+      flash.style.background = '#fffdf5';
       setTimeout(() => flash.classList.remove('flash-in'), 600);
     }, 200);
   }
