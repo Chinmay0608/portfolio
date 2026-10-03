@@ -266,11 +266,33 @@
   /* ── HERO ── */
   #hero {
     min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 0 4rem;
+    display: flex;
+    align-items: center;
+    padding: 6rem 4rem 4rem;
     position: relative;
     overflow: hidden;
   }
+  .hero-layout {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 3.5rem;
+    align-items: center;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    z-index: 1;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero-right {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
   .hero-eyebrow {
     font-family: var(--font-mono);
     font-size: 0.78rem;
@@ -283,7 +305,7 @@
   }
   .hero-name {
     font-family: var(--font-display);
-    font-size: clamp(3rem, 7vw, 6rem);
+    font-size: clamp(2.8rem, 5.5vw, 5.2rem);
     font-weight: 700;
     color: var(--white);
     line-height: 1.05;
@@ -294,11 +316,11 @@
   }
   .hero-typewriter {
     font-family: var(--font-display);
-    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-size: clamp(1.3rem, 2.5vw, 1.85rem);
     font-weight: 400;
     color: var(--gray);
     height: 2.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.8rem;
     opacity: 0;
     animation: fadeUp 0.6s 0.5s forwards;
   }
@@ -338,6 +360,358 @@
     transition: opacity 0.2s, transform 0.15s;
   }
   .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  /* ── INTERACTIVE TERMINAL CARD ── */
+  .terminal-card {
+    width: 100%;
+    max-width: 580px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  [data-theme="light"] .terminal-card {
+    box-shadow: 0 20px 45px -12px rgba(28, 25, 23, 0.09), 0 4px 14px -2px rgba(28, 25, 23, 0.03);
+    background: #ffffff;
+  }
+  .terminal-card:hover {
+    border-color: rgba(245, 158, 11, 0.35);
+  }
+
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+    gap: 0.5rem;
+  }
+  .terminal-dots {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .terminal-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .dot-red { background: #ef4444; }
+  .dot-yellow { background: #f59e0b; }
+  .dot-green { background: #10b981; }
+
+  .terminal-tabs {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+  }
+  .terminal-tab {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 0.3rem 0.65rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--gray-dim);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: all 0.2s ease;
+  }
+  .terminal-tab svg {
+    width: 13px;
+    height: 13px;
+    stroke-width: 2px;
+  }
+  .terminal-tab:hover {
+    color: var(--white);
+    background: rgba(125, 125, 125, 0.08);
+  }
+  .terminal-tab.active {
+    color: var(--amber);
+    background: var(--bg2);
+    border-color: var(--border);
+  }
+  [data-theme="light"] .terminal-tab.active {
+    background: #ffffff;
+  }
+
+  .terminal-status {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: #10b981;
+    white-space: nowrap;
+  }
+  .status-pulse {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+    animation: pulse 2s infinite ease-in-out;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+
+  .terminal-body {
+    padding: 1.25rem;
+    min-height: 250px;
+    background: var(--bg2);
+  }
+  [data-theme="light"] .terminal-body {
+    background: #ffffff;
+  }
+  .tab-pane {
+    display: none;
+  }
+  .tab-pane.active {
+    display: block;
+    animation: fadeInTab 0.25s ease forwards;
+  }
+  @keyframes fadeInTab {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Code View */
+  .code-editor {
+    display: flex;
+    gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.65;
+  }
+  .line-numbers {
+    display: flex;
+    flex-direction: column;
+    color: var(--gray-dim);
+    opacity: 0.4;
+    user-select: none;
+    text-align: right;
+    font-size: 0.74rem;
+  }
+  .code-content {
+    margin: 0;
+    overflow-x: auto;
+    color: var(--gray);
+    flex: 1;
+  }
+  .code-content code {
+    font-family: inherit;
+  }
+  .kw { color: #f472b6; font-weight: 500; }
+  .type { color: #38bdf8; }
+  .const { color: #fbbf24; }
+  .str { color: #34d399; }
+  .num { color: #a78bfa; }
+  .cmt { color: var(--gray-dim); font-style: italic; opacity: 0.8; }
+
+  [data-theme="light"] .kw { color: #c026d3; }
+  [data-theme="light"] .type { color: #0284c7; }
+  [data-theme="light"] .const { color: #d97706; }
+  [data-theme="light"] .str { color: #059669; }
+  [data-theme="light"] .num { color: #7c3aed; }
+
+  /* Pipeline View */
+  .pipeline-flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+  .pipe-node {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.35rem;
+    transition: all 0.25s ease;
+  }
+  .pipe-node.highlight {
+    border-color: var(--amber);
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.3);
+    transform: translateY(-2px);
+  }
+  .node-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(245, 158, 11, 0.12);
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .node-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+  .node-title {
+    font-family: var(--font-display);
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .node-sub {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--gray-dim);
+    line-height: 1.2;
+  }
+  .pipe-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-dim);
+    position: relative;
+  }
+  .pipe-arrow svg {
+    width: 14px;
+    height: 14px;
+  }
+  .packet {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 8px var(--amber);
+    opacity: 0;
+    left: 0;
+  }
+  .packet.active {
+    animation: flowPacket 0.6s ease-in-out forwards;
+  }
+  @keyframes flowPacket {
+    0% { left: -10px; opacity: 0; }
+    30% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { left: 14px; opacity: 0; }
+  }
+
+  .pipeline-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .pipe-btn {
+    background: var(--amber);
+    color: #0a0a0f;
+    border: none;
+    padding: 0.45rem 0.85rem;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  .pipe-btn svg { width: 13px; height: 13px; }
+  .pipe-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .pipe-metrics {
+    display: flex;
+    gap: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--gray);
+  }
+  .metric-item strong {
+    color: var(--amber);
+  }
+
+  /* Logs Console */
+  .logs-console {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    line-height: 1.7;
+    color: var(--gray);
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  .log-line {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+    margin-bottom: 0.25rem;
+  }
+  .log-time { color: var(--gray-dim); opacity: 0.7; }
+  .log-tag {
+    font-size: 0.62rem;
+    font-weight: 600;
+    padding: 1px 4px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+  .tag-info { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+  .tag-kafka { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+  .tag-redis { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+  .tag-success { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+  .log-prompt { color: var(--amber); font-weight: bold; }
+  .log-cursor {
+    display: inline-block;
+    width: 6px;
+    height: 12px;
+    background: var(--amber);
+    animation: blink 0.9s infinite;
+  }
+
+  .terminal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: var(--bg3);
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--gray-dim);
+  }
+  .footer-left, .footer-right {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  .footer-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .footer-badge svg { width: 11px; height: 11px; }
+
+  @media (max-width: 1024px) {
+    #hero { padding-top: 7rem; padding-bottom: 4rem; }
+    .hero-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-right { justify-content: flex-start; }
+    .terminal-card { max-width: 100%; }
+  }
+  @media (max-width: 640px) {
+    .pipeline-flow { grid-template-columns: 1fr; gap: 0.6rem; }
+    .pipe-arrow { transform: rotate(90deg); margin: 0.2rem 0; }
+  }
   .btn-ghost {
     padding: 0.75rem 1.75rem;
     border: 1px solid var(--border);
@@ -717,6 +1091,13 @@
     0%, 100% { opacity: 1; }
     50%       { opacity: 0; }
   }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  .spin {
+    animation: spin 1s linear infinite;
+  }
 
   .reveal {
     opacity: 0;
@@ -814,13 +1195,140 @@
 <!-- HERO -->
 <section id="hero">
   <div class="glow"></div>
-  <h1 class="hero-name">Chinmay<br/>Maheshwari</h1>
-  <div class="hero-typewriter" id="typewriter"><span></span><span class="cursor"></span></div>
-  <p class="hero-sub">B.Tech (IT) undergrad who builds first, then optimizes — shipping event-driven backends, full-stack platforms, and AI-integrated systems across Java and JavaScript.</p>
-  <div class="hero-ctas">
-    <a href="#projects" class="btn-primary">See my work</a>
-    <a href="./resume.pdf" target="_blank" class="btn-ghost">Resume ↗</a>
-    <a href="#contact" class="btn-ghost">Get in touch</a>
+  <div class="hero-layout">
+    <div class="hero-left">
+      <h1 class="hero-name">Chinmay<br/>Maheshwari</h1>
+      <div class="hero-typewriter" id="typewriter"><span></span><span class="cursor"></span></div>
+      <p class="hero-sub">B.Tech (IT) undergrad who builds first, then optimizes — shipping event-driven backends, full-stack platforms, and AI-integrated systems across Java and JavaScript.</p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">See my work</a>
+        <a href="./resume.pdf" target="_blank" class="btn-ghost">Resume ↗</a>
+        <a href="#contact" class="btn-ghost">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="terminal-card">
+        <!-- Terminal Header -->
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="terminal-dot dot-red"></span>
+            <span class="terminal-dot dot-yellow"></span>
+            <span class="terminal-dot dot-green"></span>
+          </div>
+          <div class="terminal-tabs">
+            <button class="terminal-tab active" data-tab="code">
+              <i data-lucide="file-code-2"></i>
+              <span>Engineer.java</span>
+            </button>
+            <button class="terminal-tab" data-tab="pipeline">
+              <i data-lucide="activity"></i>
+              <span>Architecture.live</span>
+            </button>
+            <button class="terminal-tab" data-tab="logs">
+              <i data-lucide="terminal"></i>
+              <span>System.log</span>
+            </button>
+          </div>
+          <div class="terminal-status">
+            <span class="status-pulse"></span>
+            <span>Online</span>
+          </div>
+        </div>
+
+        <!-- Terminal Body -->
+        <div class="terminal-body">
+          <!-- TAB 1: Code View -->
+          <div class="tab-pane active" id="tab-code">
+            <div class="code-editor">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                <span>11</span><span>12</span><span>13</span><span>14</span>
+              </div>
+              <pre class="code-content"><code><span class="kw">public record</span> <span class="type">SoftwareEngineer</span>(
+  <span class="type">String</span> name,
+  <span class="type">String</span> status,
+  <span class="type">String</span>[] coreStack,
+  <span class="type">Metrics</span> metrics
+) {
+  <span class="kw">public static final</span> <span class="type">SoftwareEngineer</span> <span class="const">DEV</span> = <span class="kw">new</span> <span class="type">SoftwareEngineer</span>(
+    <span class="str">"Chinmay Maheshwari"</span>,
+    <span class="str">"Available for SWE Roles (2026)"</span>,
+    <span class="kw">new</span> <span class="type">String</span>[]{ <span class="str">"Java"</span>, <span class="str">"Spring Boot 3"</span>, <span class="str">"Kafka"</span>, <span class="str">"Redis"</span>, <span class="str">"React"</span> },
+    <span class="kw">new</span> <span class="type">Metrics</span>(<span class="num">400</span> <span class="cmt">/* DSA */</span>, <span class="num">9</span> <span class="cmt">/* APIs */</span>, <span class="num">8.8</span> <span class="cmt">/* CGPA */</span>)
+  );
+}</code></pre>
+            </div>
+          </div>
+
+          <!-- TAB 2: Live Architecture -->
+          <div class="tab-pane" id="tab-pipeline">
+            <div class="pipeline-container">
+              <div class="pipeline-flow">
+                <div class="pipe-node" id="node-client">
+                  <div class="node-icon"><i data-lucide="globe"></i></div>
+                  <span class="node-title">Client</span>
+                  <span class="node-sub">50 Threads</span>
+                </div>
+                <div class="pipe-arrow">
+                  <span class="packet" id="pkt-1"></span>
+                  <i data-lucide="arrow-right"></i>
+                </div>
+                <div class="pipe-node" id="node-kafka">
+                  <div class="node-icon"><i data-lucide="layers"></i></div>
+                  <span class="node-title">Kafka</span>
+                  <span class="node-sub">orders.events</span>
+                </div>
+                <div class="pipe-arrow">
+                  <span class="packet" id="pkt-2"></span>
+                  <i data-lucide="arrow-right"></i>
+                </div>
+                <div class="pipe-node" id="node-redis">
+                  <div class="node-icon"><i data-lucide="lock"></i></div>
+                  <span class="node-title">Redis Lock</span>
+                  <span class="node-sub">0.8ms Sync</span>
+                </div>
+              </div>
+
+              <div class="pipeline-actions">
+                <button class="pipe-btn" id="simulate-btn">
+                  <i data-lucide="play"></i>
+                  <span>Simulate Order Event</span>
+                </button>
+                <div class="pipe-metrics">
+                  <span class="metric-item"><i data-lucide="shield-check"></i> Race Condition: <strong>0%</strong></span>
+                  <span class="metric-item"><i data-lucide="zap"></i> Latency: <strong>&lt;15ms</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: System Logs -->
+          <div class="tab-pane" id="tab-logs">
+            <div class="logs-console" id="logs-console">
+              <div class="log-line"><span class="log-time">[00:00.01]</span> <span class="log-tag tag-info">INFO</span> Spring Boot 3.2.0 initialized on port 8080</div>
+              <div class="log-line"><span class="log-time">[00:00.04]</span> <span class="log-tag tag-kafka">KAFKA</span> Connected to bootstrap broker localhost:9092</div>
+              <div class="log-line"><span class="log-time">[00:00.08]</span> <span class="log-tag tag-redis">REDIS</span> Distributed locking pool verified (Redisson client)</div>
+              <div class="log-line"><span class="log-time">[00:00.12]</span> <span class="log-tag tag-success">READY</span> Ready to accept production traffic · 0 failures</div>
+              <div class="log-line log-typing"><span class="log-prompt">&gt;</span> <span id="dynamic-log">Event-driven pipeline active. Listening for requests...</span><span class="log-cursor"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal Footer -->
+        <div class="terminal-footer">
+          <div class="footer-left">
+            <span class="footer-badge"><i data-lucide="cpu"></i> Java 21 (JVM)</span>
+            <span class="footer-badge"><i data-lucide="git-branch"></i> main</span>
+          </div>
+          <div class="footer-right">
+            <span>UTF-8</span>
+            <span>LF</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1224,6 +1732,79 @@ lucide.createIcons();
       }
     }, 380); // hold at bottom briefly, then release
   });
+})();
+
+// ── Terminal Tabs & Pipeline Simulation ──
+(function() {
+  const tabs = document.querySelectorAll('.terminal-tab');
+  const panes = document.querySelectorAll('.tab-pane');
+  const simBtn = document.getElementById('simulate-btn');
+  const dynamicLog = document.getElementById('dynamic-log');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-tab');
+      tabs.forEach(t => t.classList.remove('active'));
+      panes.forEach(p => p.classList.remove('active'));
+      
+      tab.classList.add('active');
+      const activePane = document.getElementById('tab-' + target);
+      if (activePane) activePane.classList.add('active');
+      lucide.createIcons();
+    });
+  });
+
+  if (simBtn) {
+    let simulating = false;
+    simBtn.addEventListener('click', () => {
+      if (simulating) return;
+      simulating = true;
+
+      const nodeClient = document.getElementById('node-client');
+      const nodeKafka = document.getElementById('node-kafka');
+      const nodeRedis = document.getElementById('node-redis');
+      const pkt1 = document.getElementById('pkt-1');
+      const pkt2 = document.getElementById('pkt-2');
+      const originalBtnText = simBtn.innerHTML;
+
+      simBtn.innerHTML = '<i data-lucide="loader-2" class="spin"></i> <span>Processing...</span>';
+      lucide.createIcons();
+
+      // Step 1: Client -> Kafka
+      nodeClient.classList.add('highlight');
+      if (pkt1) pkt1.classList.add('active');
+
+      setTimeout(() => {
+        nodeClient.classList.remove('highlight');
+        nodeKafka.classList.add('highlight');
+        if (pkt1) pkt1.classList.remove('active');
+        if (pkt2) pkt2.classList.add('active');
+
+        // Step 2: Kafka -> Redis Lock
+        setTimeout(() => {
+          nodeKafka.classList.remove('highlight');
+          nodeRedis.classList.add('highlight');
+          if (pkt2) pkt2.classList.remove('active');
+
+          // Log update
+          if (dynamicLog) {
+            const time = new Date().toLocaleTimeString('en-GB');
+            dynamicLog.textContent = `[${time}] OrderEvent#${Math.floor(1000 + Math.random() * 9000)} locked via Redis & committed.`;
+          }
+
+          simBtn.innerHTML = '<i data-lucide="check"></i> <span>Lock Acquired (0 Race Cond)</span>';
+          lucide.createIcons();
+
+          setTimeout(() => {
+            nodeRedis.classList.remove('highlight');
+            simBtn.innerHTML = originalBtnText;
+            simulating = false;
+            lucide.createIcons();
+          }, 1800);
+        }, 450);
+      }, 400);
+    });
+  }
 })();
 
 </script>
