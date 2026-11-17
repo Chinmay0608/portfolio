@@ -1357,7 +1357,7 @@
         <div class="stat-label">REST APIs shipped</div>
       </div>
       <div class="stat-card reveal">
-        <div class="stat-number">3</div>
+        <div class="stat-number">4</div>
         <div class="stat-label">Projects built</div>
       </div>
     </div>
@@ -1377,17 +1377,22 @@
         </div>
         <span class="exp-duration">May 2026 - June 2026</span>
       </div>
-      <p class="exp-desc">Chose and built a Job Portal System independently as my internship project, working end to end across the backend, database and tests.</p>
+      <p class="exp-desc">Architected and shipped a full-stack Job Portal System supporting 2 user roles (recruiter and candidate), deployed live on Vercel.</p>
       <ul class="exp-bullets">
-        <li>Built the back-end services for the Job Portal System in Node.js, with 9+ REST API endpoints and JWT role-based access control for recruiter and candidate workflows.</li>
-        <li>Designed a 3-collection MongoDB schema with dynamic filtering, and wrote integration and regression tests to catch issues before release.</li>
-        <li>Used AI coding tools (Claude, GitHub Copilot) to speed up delivery and improve code quality.</li>
+        <li>Engineered 10+ secure REST API endpoints in Node.js &amp; Express with role-based access control for 2 user roles (recruiter and candidate), backed by JWT and Google OAuth 2.0 (Firebase) authentication.</li>
+        <li>Implemented Redis caching to accelerate job listing queries and Redis rate limiting to protect auth/application endpoints, paired with BullMQ async email queues for reliable background delivery.</li>
+        <li>Built Cloudinary resume upload pipeline with MIME-type validation, structured a 3-collection MongoDB schema with dynamic filtering, and deployed the production application live on Vercel.</li>
       </ul>
       <div class="project-stack" style="margin-top: 1rem;">
         <span class="stack-pill">Node.js</span>
-        <span class="stack-pill">REST APIs</span>
-        <span class="stack-pill">JWT</span>
+        <span class="stack-pill">Express.js</span>
         <span class="stack-pill">MongoDB</span>
+        <span class="stack-pill">Redis</span>
+        <span class="stack-pill">BullMQ</span>
+        <span class="stack-pill">JWT</span>
+        <span class="stack-pill">Google OAuth (Firebase)</span>
+        <span class="stack-pill">Cloudinary</span>
+        <span class="stack-pill">Vercel</span>
       </div>
     </div>
   </div>
@@ -1551,6 +1556,17 @@ type();
 // ── Projects Data & Config (Trivially Reorderable) ──
 const projectsData = [
   {
+    title: "AI Interview Prep Kit (trao)",
+    description: "A full-stack AI tool that runs a 12-step LLM pipeline (Groq + Gemini) to turn a job description into a personalized interview prep kit — question bank, flashcards, and a day-by-day study schedule. Built with SSE streaming for real-time progress, optimistic locking with 409 conflict handling, and 238 passing tests across a monorepo of 3 packages with 0 TypeScript errors.",
+    tags: ["Next.js 15", "React", "TypeScript", "Express", "MongoDB", "Groq", "Gemini"],
+    icon: "sparkles",
+    links: [
+      { label: "GitHub ↗", url: "https://github.com/Chinmay0608/trao-ai-interview-prep-kit" }
+    ],
+    badge: "● NEW",
+    image: "./trao-preview.svg"
+  },
+  {
     title: "Distributed Order Processing System",
     description: "A backend system solving inventory race conditions under concurrent load, using Redis distributed locking and an asynchronous Kafka-driven order pipeline.",
     tags: ["Java", "Spring Boot", "Kafka", "Redis", "MongoDB", "Docker"],
@@ -1558,12 +1574,11 @@ const projectsData = [
     links: [
       { label: "GitHub ↗", url: "https://github.com/Chinmay0608/distributed-order-processing" }
     ],
-    badge: "● NEW",
     image: "./distributed-order-preview.svg"
   },
   {
     title: "MindVault",
-    description: "A production-grade journaling backend with an event-driven Kafka pipeline for real-time AI sentiment analysis via Gemini Flash API. Includes a local lexicon fallback for reliability, CI/CD via GitHub Actions, and compound-index optimisations that cut retrieval latency by 25%.",
+    description: "A production-grade journaling backend with an event-driven Kafka pipeline for real-time AI sentiment analysis via Gemini Flash API. Includes a local lexicon fallback for reliability, and CI/CD via GitHub Actions.",
     tags: ["Java", "Spring Boot", "Kafka", "MongoDB", "Gemini API"],
     icon: "brain",
     links: [
